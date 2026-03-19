@@ -182,7 +182,7 @@ onUnmounted(() => {
         @click="handleLike"
       >
         <span class="like-icon">{{ hasLiked ? '✅' : '👍' }}</span>
-        <span class="like-text">{{ hasLiked ? t('alreadyLikedWithRank', { n: myRank }) : t('likeButton') }}</span>
+        <span class="like-text">{{ hasLiked ? t('alreadyLikedWithRank') + '#' + myRank + t('alreadyLikedWithRankAfter') : t('likeButton') }}</span>
       </button>
 
       <p class="hero-desc">{{ t('description') }}</p>
@@ -193,7 +193,7 @@ onUnmounted(() => {
       <div v-if="dialogVisible" class="overlay" @click.self="closeDialog">
         <div class="dialog">
           <h2>{{ t('dialogTitle') }}</h2>
-          <p>{{ t('dialogMessage', { n: myRank }) }}</p>
+          <p>{{ t('dialogMessageBefore') }} <span class="rank-number">#{{ myRank }}</span> {{ t('dialogMessageAfter') }}</p>
           <button class="dialog-btn" @click="closeDialog">{{ t('close') }}</button>
         </div>
       </div>

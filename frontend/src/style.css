@@ -441,3 +441,151 @@ body {
   background: rgba(255, 45, 149, 0.15);
   box-shadow: var(--glow-pink);
 }
+
+/* ========== 移动端适配 ========== */
+@media (max-width: 768px) {
+  body {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .app {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 80px 16px 40px;
+  }
+
+  /* 左上角计数 */
+  .top-left {
+    top: 12px;
+    left: 12px;
+    padding: 8px 14px;
+    gap: 8px;
+  }
+
+  .count-label {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  .count-number {
+    font-size: 24px;
+  }
+
+  /* 右上角 */
+  .top-right {
+    top: 14px;
+    right: 12px;
+    gap: 8px;
+  }
+
+  .github-link {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+
+  .lang-btn {
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+
+  /* 中间内容 */
+  .center {
+    gap: 16px;
+  }
+
+  .hero-title {
+    font-size: 24px;
+    letter-spacing: 3px;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  .hero-desc {
+    max-width: 320px;
+    font-size: 13px;
+    line-height: 1.6;
+    padding: 0 8px;
+  }
+
+  .hero-footer {
+    font-size: 13px;
+  }
+
+  /* 点赞按钮 */
+  .like-btn {
+    width: 160px;
+    height: 160px;
+    gap: 6px;
+  }
+
+  .like-btn::before {
+    inset: -8px;
+  }
+
+  .like-btn::after {
+    inset: -16px;
+  }
+
+  .like-icon {
+    font-size: 44px;
+  }
+
+  .like-text {
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 0 8px;
+    text-align: center;
+  }
+
+  /* 弹窗 */
+  .dialog {
+    padding: 28px 24px;
+    max-width: 320px;
+  }
+
+  .dialog h2 {
+    font-size: 18px;
+  }
+
+  .dialog p {
+    font-size: 16px;
+  }
+
+  /* 弹幕 */
+  .danmaku-item {
+    font-size: 12px;
+  }
+}
+
+/* 超小屏幕 (iPhone SE 等) */
+@media (max-width: 375px) {
+  .hero-title {
+    font-size: 20px;
+  }
+
+  .like-btn {
+    width: 140px;
+    height: 140px;
+  }
+
+  .like-icon {
+    font-size: 36px;
+  }
+
+  .like-text {
+    font-size: 9px;
+  }
+
+  .top-left {
+    padding: 6px 10px;
+  }
+
+  .count-number {
+    font-size: 20px;
+  }
+}
