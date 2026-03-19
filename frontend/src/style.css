@@ -79,6 +79,32 @@ body {
   pointer-events: none;
 }
 
+/* 弹幕层 */
+.danmaku-layer {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.danmaku-item {
+  position: absolute;
+  left: 100%;
+  white-space: nowrap;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  animation: danmakuScroll linear forwards;
+  will-change: transform;
+}
+
+@keyframes danmakuScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100vw - 100%)); }
+}
+
 /* 左上角计数 - HUD 风格 */
 .top-left {
   position: absolute;
@@ -117,11 +143,42 @@ body {
   50% { opacity: 0.8; }
 }
 
-/* 右上角语言切换 */
-.lang-btn {
+/* 右上角区域 */
+.top-right {
   position: absolute;
   top: 32px;
   right: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 10;
+}
+
+.github-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid rgba(224, 224, 255, 0.2);
+  padding: 7px 16px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(224, 224, 255, 0.6);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+}
+
+.github-link:hover {
+  color: var(--neon-cyan);
+  border-color: rgba(0, 240, 255, 0.4);
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+}
+
+/* 语言切换 */
+.lang-btn {
   background: transparent;
   border: 1px solid rgba(0, 240, 255, 0.4);
   padding: 8px 20px;

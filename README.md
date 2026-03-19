@@ -2,13 +2,11 @@
 
 **[中文版](#-地球-online)**
 
-We are all characters in Earth Online.
+We are all travelers in "Earth Online."
 
-Every day, you can press the like button once — not for anyone else, but for yourself. Each like is a spiritual interaction with the player behind your character — a gentle reminder to pay attention to your own journey, and to look forward to a better life ahead.
+Every day, you can press the like button once — not for anyone else, but for yourself. Every like is a gentle echo between souls. It whispers to the you who manages this life: even amidst an ordinary plot, cherish your heart at this moment. Believe me, the scenery in the next level will be more beautiful.
 
-This is not just a counter. It's a moment of connection between you and the one who controls your fate.
-
-Be kind to yourself today.
+The journey is long, don't be too hard on yourself. Today, remember to give yourself a warm embrace.
 
 ## Features
 
@@ -56,13 +54,11 @@ The frontend dev server proxies `/api` to `http://localhost:3000`.
 
 **[English Version](#-earth-online)**
 
-我们都是地球Online里的角色。
+我们都是「地球 Online」里的旅人。
 
-每天，你可以按一次点赞按钮——不是为了别人，而是为了自己。每一次点赞，都是在和操纵我们角色的玩家完成一次精神互动——提醒TA多关注自己的处境，期待未来的生活可以更好。
+每天，你可以按一次点赞按钮——不是为了别人，而是为了自己。每一次点赞，都是灵魂间温柔的回响。它在轻声告诉掌管生活的你：哪怕身处平凡剧情，也要珍视此刻的心情。请相信，下一关的风景会更美。
 
-这不只是一个计数器，而是你和掌控你命运的那个人之间的一次连接。
-
-今天，也请对自己好一点。
+游戏漫长，别太辛苦。今天，记得给自己一个温暖的拥抱。
 
 ## 功能
 
