@@ -1,0 +1,386 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0a0a12;
+  --text: #e0e0ff;
+  --neon-cyan: #00f0ff;
+  --neon-pink: #ff2d95;
+  --neon-purple: #b026ff;
+  --neon-yellow: #f0ff00;
+  --card-bg: rgba(10, 10, 30, 0.85);
+  --glow-cyan: 0 0 10px #00f0ff, 0 0 30px rgba(0, 240, 255, 0.4);
+  --glow-pink: 0 0 10px #ff2d95, 0 0 30px rgba(255, 45, 149, 0.4);
+}
+
+body {
+  font-family: 'Rajdhani', 'Orbitron', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+}
+
+.app {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(176, 38, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(0, 240, 255, 0.1) 0%, transparent 50%),
+    var(--bg);
+}
+
+/* 扫描线效果 */
+.app::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 240, 255, 0.03) 2px,
+    rgba(0, 240, 255, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* 网格地面 */
+.app::after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: -10%;
+  width: 120%;
+  height: 40%;
+  background:
+    linear-gradient(transparent 60%, rgba(0, 240, 255, 0.08)),
+    repeating-linear-gradient(90deg, rgba(0, 240, 255, 0.1) 0px, transparent 1px, transparent 80px),
+    repeating-linear-gradient(0deg, rgba(0, 240, 255, 0.05) 0px, transparent 1px, transparent 80px);
+  transform: perspective(500px) rotateX(60deg);
+  transform-origin: bottom;
+  pointer-events: none;
+}
+
+/* 左上角计数 - HUD 风格 */
+.top-left {
+  position: absolute;
+  top: 28px;
+  left: 32px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 12px 20px;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  border-left: 3px solid var(--neon-cyan);
+  background: rgba(0, 240, 255, 0.05);
+  clip-path: polygon(0 0, 100% 0, 96% 100%, 0 100%);
+}
+
+.count-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(0, 240, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.count-number {
+  font-family: 'Orbitron', monospace;
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--neon-cyan);
+  text-shadow: var(--glow-cyan);
+  animation: numberPulse 2s ease-in-out infinite;
+}
+
+@keyframes numberPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+/* 右上角语言切换 */
+.lang-btn {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  background: transparent;
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  padding: 8px 20px;
+  font-family: 'Orbitron', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--neon-cyan);
+  cursor: pointer;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+}
+
+.lang-btn:hover {
+  background: rgba(0, 240, 255, 0.1);
+  border-color: var(--neon-cyan);
+  text-shadow: var(--glow-cyan);
+}
+
+/* 中间点赞按钮 - 赛博朋克大按钮 */
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+  gap: 24px;
+}
+
+.hero-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--neon-cyan);
+  text-shadow: var(--glow-cyan);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
+.hero-subtitle {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(255, 45, 149, 0.8);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.hero-desc {
+  max-width: 480px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(224, 224, 255, 0.5);
+  text-align: center;
+  line-height: 1.7;
+  margin-top: 8px;
+}
+
+.hero-footer {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--neon-purple);
+  letter-spacing: 1px;
+  text-shadow: 0 0 12px rgba(176, 38, 255, 0.4);
+}
+
+.like-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 220px;
+  height: 220px;
+  background: linear-gradient(135deg, rgba(255, 45, 149, 0.15), rgba(176, 38, 255, 0.15));
+  border: 2px solid var(--neon-pink);
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.3s;
+  box-shadow:
+    0 0 20px rgba(255, 45, 149, 0.3),
+    0 0 60px rgba(255, 45, 149, 0.15),
+    inset 0 0 30px rgba(255, 45, 149, 0.1);
+  animation: btnBreath 3s ease-in-out infinite;
+}
+
+@keyframes btnBreath {
+  0%, 100% {
+    box-shadow:
+      0 0 20px rgba(255, 45, 149, 0.3),
+      0 0 60px rgba(255, 45, 149, 0.15),
+      inset 0 0 30px rgba(255, 45, 149, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 30px rgba(255, 45, 149, 0.5),
+      0 0 80px rgba(255, 45, 149, 0.25),
+      inset 0 0 40px rgba(255, 45, 149, 0.15);
+  }
+}
+
+/* 外圈旋转光环 */
+.like-btn::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 45, 149, 0.4);
+  animation: spin 12s linear infinite;
+}
+
+.like-btn::after {
+  content: '';
+  position: absolute;
+  inset: -24px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-top-color: rgba(0, 240, 255, 0.3);
+  border-bottom-color: rgba(176, 38, 255, 0.3);
+  animation: spin 8s linear infinite reverse;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.like-btn:hover {
+  transform: scale(1.08);
+  border-color: var(--neon-pink);
+  box-shadow:
+    0 0 40px rgba(255, 45, 149, 0.6),
+    0 0 100px rgba(255, 45, 149, 0.3),
+    inset 0 0 50px rgba(255, 45, 149, 0.2);
+}
+
+.like-btn:active,
+.like-btn.pressing {
+  transform: scale(0.95);
+}
+
+.like-btn:disabled {
+  cursor: not-allowed;
+}
+
+.like-btn.liked {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(176, 38, 255, 0.1));
+  border-color: rgba(0, 240, 255, 0.4);
+  box-shadow:
+    0 0 15px rgba(0, 240, 255, 0.2),
+    inset 0 0 20px rgba(0, 240, 255, 0.05);
+  animation: none;
+}
+
+.like-btn.liked::before {
+  border-color: rgba(0, 240, 255, 0.2);
+  animation-duration: 20s;
+}
+
+.like-icon {
+  font-size: 64px;
+  line-height: 1;
+  filter: drop-shadow(0 0 8px rgba(255, 45, 149, 0.6));
+}
+
+.liked .like-icon {
+  filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.6));
+}
+
+.like-text {
+  font-family: 'Orbitron', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(255, 45, 149, 0.6);
+}
+
+.liked .like-text {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+}
+
+/* 弹窗 - 赛博朋克面板 */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.dialog {
+  background: var(--card-bg);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  border-top: 3px solid var(--neon-cyan);
+  padding: 40px 48px;
+  text-align: center;
+  max-width: 420px;
+  width: 90%;
+  animation: slideUp 0.3s ease;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
+  box-shadow:
+    0 0 30px rgba(0, 240, 255, 0.1),
+    inset 0 0 60px rgba(0, 240, 255, 0.03);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.dialog h2 {
+  font-family: 'Orbitron', monospace;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--neon-cyan);
+  text-shadow: var(--glow-cyan);
+  letter-spacing: 2px;
+}
+
+.dialog p {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(224, 224, 255, 0.8);
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.dialog-btn {
+  background: transparent;
+  border: 1px solid var(--neon-pink);
+  color: var(--neon-pink);
+  padding: 10px 40px;
+  font-family: 'Orbitron', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+}
+
+.dialog-btn:hover {
+  background: rgba(255, 45, 149, 0.15);
+  box-shadow: var(--glow-pink);
+}
